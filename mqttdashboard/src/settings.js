@@ -1,5 +1,5 @@
 const settings = {
-    DASHBOARD_NAME: 'Oximetro IoT UFRJ',
+    DASHBOARD_NAME: 'Dashboard UFRJ',
     BROKER_PROTOCOL: 'ws',
     BROKER_IP: 'k3s.cos.ufrj.br',
     BROKER_PORT: 30364,

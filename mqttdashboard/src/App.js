@@ -5,22 +5,24 @@ import mqtt from 'mqtt';
 const App = () => {
 
   const  [topics, setTopics]  = useState([]);
+  const  [messages, setMessages]  = useState([]);
 
   function addTopic(topic){
-     if (topics.includes(topic)){return;}
-     const newTopics = topics.push(topic);
-     setTopics(newTopics);  
+    if (topics.includes(topic)) return;
+    const newTopics =  topics;
+    newTopics.push(topic);
+    setTopics(newTopics);   
   }
-  useEffect(() => {
-    const options = {
-      username: settings.BROKER_LOGIN,
-      password: settings.BROKER_PASSWORD,
-      port: settings.BROKER_PORT,
-    };
- 
-   const client = mqtt.connect(`${settings.BROKER_PROTOCOL}://${settings.BROKER_IP}${settings.BROKER_URL_PATH.startsWith('/') ? settings.BROKER_URL_PATH : `/${settings.BROKER_URL_PATH}`}`, options);
 
-   if (client){
+  const options = {
+    username: settings.BROKER_LOGIN,
+    password: settings.BROKER_PASSWORD,
+    port: settings.BROKER_PORT,
+  };
+
+  const client = mqtt.connect(`${settings.BROKER_PROTOCOL}://${settings.BROKER_IP}${settings.BROKER_URL_PATH.startsWith('/') ? settings.BROKER_URL_PATH : `/${settings.BROKER_URL_PATH}`}`, options);
+  
+  if (client){
 
     client.on('connect',  () => {
       console.log("connected");
@@ -37,25 +39,32 @@ const App = () => {
         console.log(err);
       }
     });
-     
     client.on('message', (topic, message) => {
-      if (!topic.includes("SAFE_ENCRYPTED")){
+      if (topic !== "SAFE_ENCRYPTED"){
         addTopic(topic);
-       // console.log(message)
         handleBrokerMessage(topic, message); 
-      }
+      }     
      });  
-   }
-  }, []);
+  }   
 
-  const handleBrokerMessage = (topic, payload) => {  
-     console.log(JSON.parse(payload.toString()))   
-     console.log(topic)  
+  const handleBrokerMessage = (topic, payload) => {
+    const message = JSON.parse(payload.toString()) 
+    const actualMessageIndex = messages.findIndex((m) => m.idBIoT === message.idBIoT);
+    if (actualMessageIndex >= 0) {
+       messages.splice(actualMessageIndex, 1);
+    }  
+    const messagesList = messages;
+    messagesList.push(message);
+    setMessages(messagesList);
   };
-  
+
   console.log(topics);
-  // eslint-disable-next-line array-callback-return
-  return <>{topics}</>;
+  console.log(messages);
+
+  return  <>
+          {topics.length > 0 && topics.map((topic)=> (<h1 key={topic}>{topic}</h1>))}
+          {messages.length > 0 && messages.map((message)=> (<h1 key={message.idBIoT}>{message.idBIoT}</h1>))}
+          </>;
 };
 
 export default App;
