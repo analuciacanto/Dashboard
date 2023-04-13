@@ -1,6 +1,7 @@
 import React, {  useState, useEffect } from 'react';
 import mqtt from 'mqtt';
 import Card from './components';
+import settings  from './settings';
 import { useStateVar } from './hooks/useStateVar.ts';
 
 const App = () => {
