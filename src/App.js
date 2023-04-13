@@ -15,13 +15,13 @@ const App = () => {
     setTopics(newTopics);   
   }
 
-  const options = {
-    username: "admin",
-    password: ".123qwe",
-    port: 30364,
+ const options = {
+    username: settings.BROKER_LOGIN,
+    password: settings.BROKER_PASSWORD,
+    port: settings.BROKER_PORT,
   };
   
-  const client = mqtt.connect(`ws://k3s.cos.ufrj.br/ws`, options);
+  const client = mqtt.connect(`${settings.BROKER_PROTOCOL}://${settings.BROKER_IP}${settings.BROKER_URL_PATH.startsWith('/') ? settings.BROKER_URL_PATH : `/${settings.BROKER_URL_PATH}`}`, options);
   
   
   client.on('connect',  () => {
