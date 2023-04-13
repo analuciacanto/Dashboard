@@ -20,7 +20,7 @@
     "process": "^0.11.10",
     "react-app-rewired": "^2.1.9",
     "stream-browserify": "^3.0.0",
-     "stream-http": "^3.2.0",
+    "stream-http": "^3.2.0",
     "url": "^0.11.0"
   },
   "scripts": {
