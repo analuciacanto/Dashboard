@@ -1,5 +1,4 @@
 import React, {  useState, useEffect } from 'react';
-import settings  from './settings';
 import mqtt from 'mqtt';
 import Card from './components';
 import { useStateVar } from './hooks/useStateVar.ts';
@@ -17,12 +16,13 @@ const App = () => {
   }
 
   const options = {
-    username: settings.BROKER_LOGIN,
-    password: settings.BROKER_PASSWORD,
-    port: settings.BROKER_PORT,
+    username: "admin",
+    password: ".123qwe",
+    port: 30364,
   };
   
-  const client = mqtt.connect(`${settings.BROKER_PROTOCOL}://${settings.BROKER_IP}${settings.BROKER_URL_PATH.startsWith('/') ? settings.BROKER_URL_PATH : `/${settings.BROKER_URL_PATH}`}`, options);
+  const client = mqtt.connect(`ws://k3s.cos.ufrj.br/ws`, options);
+  
   
   client.on('connect',  () => {
     //  console.log("connected");
