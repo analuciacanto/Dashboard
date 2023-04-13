@@ -11,4 +11,6 @@ const settings = {
     MINUTES_TO_EXPIRE: 1,   
     REPORT_INTERVAL_MINUTES: 60,
   };
+
+export default settings;
   
