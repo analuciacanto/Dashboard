@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/www.anacanto.com.br/Dashboard/static/css/main.ada3e412.css",
-    "main.js": "/www.anacanto.com.br/Dashboard/static/js/main.8deae02e.js",
-    "static/js/787.72c38bc9.chunk.js": "/www.anacanto.com.br/Dashboard/static/js/787.72c38bc9.chunk.js",
-    "static/media/coppe.png": "/www.anacanto.com.br/Dashboard/static/media/coppe.c6cfca9314760d344282.png",
-    "index.html": "/www.anacanto.com.br/Dashboard/index.html",
-    "main.ada3e412.css.map": "/www.anacanto.com.br/Dashboard/static/css/main.ada3e412.css.map",
-    "main.8deae02e.js.map": "/www.anacanto.com.br/Dashboard/static/js/main.8deae02e.js.map",
-    "787.72c38bc9.chunk.js.map": "/www.anacanto.com.br/Dashboard/static/js/787.72c38bc9.chunk.js.map"
+    "main.css": "/static/css/main.ada3e412.css",
+    "main.js": "/static/js/main.e0927cde.js",
+    "static/js/787.72c38bc9.chunk.js": "/static/js/787.72c38bc9.chunk.js",
+    "static/media/coppe.png": "/static/media/coppe.c6cfca9314760d344282.png",
+    "index.html": "/index.html",
+    "main.ada3e412.css.map": "/static/css/main.ada3e412.css.map",
+    "main.e0927cde.js.map": "/static/js/main.e0927cde.js.map",
+    "787.72c38bc9.chunk.js.map": "/static/js/787.72c38bc9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ada3e412.css",
-    "static/js/main.8deae02e.js"
+    "static/js/main.e0927cde.js"
   ]
 }
