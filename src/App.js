@@ -1,8 +1,10 @@
-import React, {  useState, useEffect } from 'react';
+import React, {  useState } from 'react';
 import mqtt from 'mqtt';
-import Card from './components';
+import Card from './components/Card';
+import Header from './components/Header';
 import settings  from './settings';
 import { useStateVar } from './hooks/useStateVar.ts';
+import "./App.css"
 
 const App = () => {
 
@@ -10,7 +12,7 @@ const App = () => {
   const  [messages, setMessages, render]  = useStateVar([]);
 
   function addTopic(topic){
-    if (topics.includes(topic)) return;
+    if (topics.length !== 0 && topics.includes(topic)) return;
     const newTopics =  topics;
     newTopics.push(topic);
     setTopics(newTopics);   
@@ -24,8 +26,7 @@ const App = () => {
   
   const client = mqtt.connect(`${settings.BROKER_PROTOCOL}://${settings.BROKER_IP}${settings.BROKER_URL_PATH.startsWith('/') ? settings.BROKER_URL_PATH : `/${settings.BROKER_URL_PATH}`}`, options);
   
-  
-  client.on('connect',  () => {
+    client.on('connect',  () => {
     //  console.log("connected");
     });
   
@@ -63,11 +64,14 @@ const App = () => {
 
   return  (
   <div>   
+    <Header/>
+    <div className='grid'> 
               {
                 messages.map((message)=> (
                     <Card key={message.idBIoT} measures={message}/>
                 ))
               }
+      </div>
 
  </div>);
 };
