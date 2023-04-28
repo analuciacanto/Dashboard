@@ -1,6 +1,5 @@
 {
   "name": "mqttdashboard",
-  "homepage": "http://analuciacanto.github.io/Dashboard",
   "version": "0.1.0",
   "engines": {
     "node": "16.x"
