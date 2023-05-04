@@ -6,7 +6,7 @@ const Card = (props) => {
   
   return (
     <div className="card-container-holder">
-    <div className={'card-container'}>
+    <div className={'card-container'} onClick={props.onClick}>
       <div className="card-face front-card-container">
         <div className={'alert-bar normal'}>          
           </div>
