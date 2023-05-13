@@ -11,7 +11,7 @@ const Card = (props) => {
         <div className={'alert-bar normal'}>          
           </div>
           <FrontCard
-            name={props.measures.topic}
+            name={props.topic}
             measures={props.measures}
           />                  
       </div>

@@ -4,14 +4,21 @@ import Card from '../../components/Card';
 import Header from '../../components/Header';
 import settings  from '../../settings';
 import { useStateVar } from '../../hooks/useStateVar.ts';
-import { Link} from 'react-router-dom';
 import "./index.css"
+import { useNavigate } from "react-router-dom";
 
 const Monitor = () => {
 
     const  [topics, setTopics]  = useState([]);
     const  [messages, setMessages, render]  = useStateVar([]);
   
+    
+    const navigate = useNavigate()
+
+    function renderRealtTime(id, topic){
+      console.log("cliqueeei");
+      navigate(`/realTime/${topic}/${id}`, { replace: true, state: { id: id, topic: topic }});    
+    }
     function addTopic(topic){
       if (topics.length !== 0 && topics.includes(topic)) return;
       const newTopics =  topics;
@@ -63,20 +70,25 @@ const Monitor = () => {
       render();
     };
 
-
-    function renderRealtTime(id){
-      return (  
-            <Link to={`/realTime/${id}`}/>
-      );
-    }
-  
+    function getMeasures(measures){
+ 
+     const list = [];
+     for (let keyMeasure in measures) {
+         if (measures.hasOwnProperty(keyMeasure)) {
+            const measure = {key: keyMeasure, measure:  measures[keyMeasure] }
+            list.push(measure);           
+         }
+      }
+      return list;
+    }        
+   
     return  (
     <div>   
       <Header/>
       <div className='grid'> 
                 {
                   messages.map((message)=> (
-                      <Card key={message.idBIoT} measures={message} onClick={()=> renderRealtTime(message.idBIoT)}/>
+                      <Card key={message.idBIoT} measures={getMeasures(message)} topic={message.topic} onClick={()=> renderRealtTime(message.idBIoT, message.topic)}/>
                   ))
                 }
         </div>

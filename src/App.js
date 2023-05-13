@@ -8,8 +8,10 @@ export default function App() {
     <Router>
         <Routes>
           <Route path="/" element={<Monitor />} />
-          <Route path="/realTime"  >
-                <Route path=":id"element={<RealTime/>} />
+          <Route path="/realTime"   >
+                <Route path=":topic" >
+                    <Route path=":id" element={<RealTime />} />
+                </Route>
           </Route>
         </Routes>
       </Router>)
