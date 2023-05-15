@@ -15,7 +15,7 @@
 .header-container .left-items-container {
   position: absolute;
   left: 24px;
-  width: 300px;
+  width: 200px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -34,5 +34,11 @@
 .header-container .clock-container {
   position: absolute;
   right: 24px;
+  align-self: center;
+}
+
+.header-container .searchBar{
+  position: absolute;
+  right: 400px;
   align-self: center;
 }

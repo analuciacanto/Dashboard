@@ -85,6 +85,7 @@ const Monitor = () => {
     return  (
     <div>   
       <Header/>
+     
       <div className='grid'> 
                 {
                   messages.map((message)=> (
